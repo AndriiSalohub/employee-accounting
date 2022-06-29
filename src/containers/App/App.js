@@ -7,11 +7,10 @@ import "./App.css";
 
 export const App = () => {
     const data = [
-        { name: "John C.", salary: 800 },
-        { name: "Alex M.", salary: 3000 },
-        { name: "carl W.", salary: 5000 },
+        { id: 1, name: "John C.", salary: 800, increase: true },
+        { id: 2, name: "Alex M.", salary: 3000, increase: false },
+        { id: 3, name: "Carl W.", salary: 5000, increase: false },
     ];
-
     return (
         <div className="app">
             <AppInfo />
