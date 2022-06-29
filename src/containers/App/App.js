@@ -6,6 +6,12 @@ import { EmployeesAddForm } from "../../components/EmployeesAddForm/EmployeesAdd
 import "./App.css";
 
 export const App = () => {
+    const data = [
+        { name: "John C.", salary: 800 },
+        { name: "Alex M.", salary: 3000 },
+        { name: "carl W.", salary: 5000 },
+    ];
+
     return (
         <div className="app">
             <AppInfo />
@@ -15,7 +21,7 @@ export const App = () => {
                 <AppFilter />
             </div>
 
-            <EmployeesList />
+            <EmployeesList data={data} />
 
             <EmployeesAddForm />
         </div>
