@@ -13,9 +13,27 @@ export class App extends React.Component {
         super(props);
         this.state = {
             data: [
-                { id: 1, name: "John C.", salary: 800, increase: true },
-                { id: 2, name: "Alex M.", salary: 3000, increase: false },
-                { id: 3, name: "Carl W.", salary: 5000, increase: false },
+                {
+                    id: 1,
+                    name: "John C.",
+                    salary: 800,
+                    increase: true,
+                    rise: true,
+                },
+                {
+                    id: 2,
+                    name: "Alex M.",
+                    salary: 3000,
+                    increase: false,
+                    rise: false,
+                },
+                {
+                    id: 3,
+                    name: "Carl W.",
+                    salary: 5000,
+                    increase: false,
+                    rise: false,
+                },
             ],
         };
         this.maxId = 4;
@@ -23,13 +41,6 @@ export class App extends React.Component {
 
     deleteItem = (id) => {
         this.setState(({ data }) => {
-            // const index = data.findIndex((elem) => elem.id == id);
-
-            // const before = data.slice(0, index);
-            // const after = data.slice(index + 1);
-
-            // const newArr = [...before, ...after];
-
             return {
                 data: data.filter((item) => item.id !== id),
             };
@@ -42,6 +53,7 @@ export class App extends React.Component {
             name,
             salary,
             increase: false,
+            rise: false,
         };
 
         this.setState((prevState) => {
@@ -49,6 +61,14 @@ export class App extends React.Component {
                 data: [...prevState.data, newItem],
             };
         });
+    };
+
+    onToggleIncrease = (id) => {
+        console.log(id);
+    };
+
+    onToggleRise = (id) => {
+        console.log(id);
     };
 
     render() {
@@ -64,6 +84,8 @@ export class App extends React.Component {
                 <EmployeesList
                     data={this.state.data}
                     onDelete={this.deleteItem}
+                    onToggleIncrease={this.onToggleIncrease}
+                    onToggleRise={this.onToggleRise}
                 />
 
                 <EmployeesAddForm addItem={this.addItem} />
