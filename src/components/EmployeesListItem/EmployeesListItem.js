@@ -5,8 +5,7 @@ export const EmployeesListItem = ({
     name,
     salary,
     onDelete,
-    onToggleIncrease,
-    onToggleRise,
+    onToggleProp,
     increase,
     rise,
 }) => {
@@ -21,7 +20,11 @@ export const EmployeesListItem = ({
 
     return (
         <li className={classNames}>
-            <span onClick={onToggleRise} className="list-group-item-label">
+            <span
+                onClick={onToggleProp}
+                className="list-group-item-label"
+                data-toggle="rise"
+            >
                 {name}
             </span>
             <input
@@ -32,8 +35,9 @@ export const EmployeesListItem = ({
             <div className="d-flex justify-content-center align-items-center">
                 <button
                     type="button"
-                    className="btn-cookie btn-sm "
-                    onClick={onToggleIncrease}
+                    className="btn-cookie btn-sm"
+                    data-toggle="increase"
+                    onClick={onToggleProp}
                 >
                     <i className="fas fa-cookie"></i>
                 </button>
