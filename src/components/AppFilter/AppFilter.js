@@ -1,47 +1,28 @@
 import React from "react";
 import "./AppFilter.css";
 
-export class AppFilter extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            filter: "",
-        };
-    }
+export const AppFilter = (props) => {
+    const buttonsData = [
+        { name: "all", lable: "Все сотрудникик" },
+        { name: "rise", lable: "На повышение" },
+        { name: "moreThan1000", lable: "З/П больше чем 1000$" },
+    ];
 
-    onChangeFilter = (e) => {
-        this.setState({ filter: e.currentTarget.getAttribute("data-toggle") });
-        this.props.onChangeFilter(e.currentTarget.getAttribute("data-toggle"));
-    };
+    const buttons = buttonsData.map(({ name, lable }) => {
+        const active = props.filter === name;
+        const clazz = active ? "btn-light" : "btn-outline-light";
 
-    render() {
         return (
-            <div className="btn-group">
-                <button
-                    className="btn btn-light"
-                    type="button"
-                    data-toggle=""
-                    onClick={this.onChangeFilter}
-                >
-                    Все сотрудники
-                </button>
-                <button
-                    className="btn btn-outline-light"
-                    type="button"
-                    data-toggle="rise"
-                    onClick={this.onChangeFilter}
-                >
-                    На повышение
-                </button>
-                <button
-                    className="btn btn-outline-light"
-                    type="button"
-                    data-toggle="moreThan1000"
-                    onClick={this.onChangeFilter}
-                >
-                    Зп больше 1000$
-                </button>
-            </div>
+            <button
+                className={`btn ${clazz}`}
+                type="button"
+                key={name}
+                onClick={() => props.onFilterSelect(name)}
+            >
+                {lable}
+            </button>
         );
-    }
-}
+    });
+
+    return <div className="btn-group">{buttons}</div>;
+};

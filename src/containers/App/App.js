@@ -36,7 +36,7 @@ export class App extends React.Component {
                 },
             ],
             term: "",
-            filter: "",
+            filter: "all",
         };
         this.maxId = 4;
     }
@@ -101,7 +101,7 @@ export class App extends React.Component {
         }
     };
 
-    onChangeFilter = (filter) => {
+    onFilterSelect = (filter) => {
         this.setState({ filter });
     };
 
@@ -122,7 +122,10 @@ export class App extends React.Component {
 
                 <div className="search-panel">
                     <SearchPanel onUpdateSearch={this.onUpdateSearch} />
-                    <AppFilter onChangeFilter={this.onChangeFilter} />
+                    <AppFilter
+                        filter={filter}
+                        onFilterSelect={this.onFilterSelect}
+                    />
                 </div>
 
                 <EmployeesList
